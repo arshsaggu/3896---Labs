@@ -6,7 +6,7 @@ class DLLN:
 
 
     def __repr__(self):
-        pass
+        return f"LLN({str(self.contents)})"
 
 
     def insertAfter(self, contents):
@@ -21,22 +21,55 @@ class DLLN:
 
     def insertBefore(self, contents):
         new_node = DLLN(contents)
+        new_node.prev = self.prev
+        new_node.next = self
+        if new_node.prev is not None:
+            new_node.prev.next = new_node
+        self.prev = new_node
+        return new_node
         
 
     def toList(self):
-        pass
+        linkedlistlist = []
+        current = self
+        while current is not None:
+            linkedlistlist.append(current.contents)
+            current = current.next
+        return linkedlistlist
+
 
     def findLast(self):
-        pass
+        current = self
+        while current.next is not None:
+            current = current.next
+        return current
+    
 
     def findFirst(self):
-        pass
+        current = self
+        while current.prev is not None:
+            current = current.prev
+        return current
+    
 
     def findAfter(self, needle):
-        pass
+        current = self
+        current = self.next
+        while current is not None:
+            if current.contents == needle:
+                return current
+            current = current.next
+        raise KeyError(needle)
+                
 
     def findBefore(self, needle):
-        pass
+        current = self
+        current = self.prev
+        while current is not None:
+            if current.contents == needle:
+                return current
+            current = current.prev
+        raise KeyError(needle)
 
 
 def main():

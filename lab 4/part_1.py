@@ -48,7 +48,7 @@ def main():
 
     print("\n** insertAfter **")
     second = first.insertAfter("bob")
-    print("we did first.insertAfter(bob), so now second should exist too, and contain bob:", second)
+    print("we did first.insertAfter(bob), so now second s hould exist too, and contain bob:", second)
 
     print("\n** more insertAfter **")
     third = second.insertAfter("carol")
